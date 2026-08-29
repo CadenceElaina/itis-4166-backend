@@ -1,0 +1,74 @@
+[
+  {
+    "action": "reset"
+  },
+  {
+    "action": "create",
+    "title": "My First Post",
+    "content": "Hello World!"
+  },
+  {
+    "action": "create",
+    "title": "Learning Node.js",
+    "content": "Node.js is fun."
+  },
+  {
+    "action": "create",
+    "title": "",
+    "content": "Missing title"
+  },
+  {
+    "action": "create",
+    "title": "Missing content",
+    "content": ""
+  },
+  {
+    "action": "list"
+  },
+  {
+    "action": "read",
+    "id": 1
+  },
+  {
+    "action": "read",
+    "id": 999
+  },
+  {
+    "action": "update",
+    "id": 1,
+    "title": "Updated First Post"
+  },
+  {
+    "action": "update",
+    "id": 2,
+    "content": "Updated content for second post"
+  },
+  {
+    "action": "update",
+    "id": 1,
+    "title": "",
+    "content": ""
+  },
+  {
+    "action": "update",
+    "id": 999,
+    "title": "Nonexistent Post"
+  },
+  {
+    "action": "list"
+  },
+  {
+    "action": "delete",
+    "id": 2
+  },
+  {
+    "action": "delete",
+    "id": 999
+  },
+  {
+    "action": "list"
+  },
+  {
+    "action": "exit"
+  }
+]
