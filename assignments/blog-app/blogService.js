@@ -1,19 +1,27 @@
 // blogService.js
 // This module handles blog post CRUD operations
 
-import fs from 'fs/promises';
-import { join } from 'path';
-import { format } from 'date-fns';
+import fs from "fs/promises";
+import { join } from "path";
+import { format } from "date-fns";
 
 // Filepath for posts.json. Use this for reading/writing posts.
-const postsFile = join(process.cwd(), 'posts.json');
+// process.cwd(...) returns current working directory (CWD)
+// __dirname returns the directory name of the directory containing the JS source code file
+// postsFile joins the directory where you triggered the node command
+// YOUR TERMINALS ACTIVE DIRECTORY with 'posts.json'
+const postsFile = join(process.cwd(), "posts.json");
 
+// * JSDoc: /** ... */ are JSDoc annotations provides documentation, auto-complete and type-checking inside editors. Zero build step / No Transpilation like in TypeScript. No compile (tsc), no bundler (vite Webpack etc.) No tsconfig.json etc.
+//@returns {Type} documents what an input argument is expected to be
+// @returns {Promise<{nextId: number, posts: Array<object>}>} - Declares that calling this fn readData() returns a Promise which resolves to an object with nextId(number) and posts(array of objects)
+// Now on hover of the fn you get the types etc. with the comment "Read the whole data file."
 /**
  * Read the whole data file.
  * @returns {Promise<{nextId: number, posts: Array<object>}>}
  */
 async function readData() {
-  const raw = await fs.readFile(postsFile, 'utf-8');
+  const raw = await fs.readFile(postsFile, "utf-8");
   return JSON.parse(raw);
 }
 
@@ -46,7 +54,7 @@ export async function createPost(title, content) {
     title,
     content,
     views: 0,
-    createdAt: format(new Date(), 'y-M-d h:mm aaa'),
+    createdAt: format(new Date(), "y-M-d h:mm aaa"),
   };
 
   data.posts.push(post);

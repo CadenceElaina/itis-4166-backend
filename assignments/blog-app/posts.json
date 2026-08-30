@@ -1,0 +1,12 @@
+{
+  "nextId": 3,
+  "posts": [
+    {
+      "id": 1,
+      "title": "Updated First Post",
+      "content": "Hello World!",
+      "views": 1,
+      "createdAt": "2026-8-29 10:14 am"
+    }
+  ]
+}

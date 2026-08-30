@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-m2",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "npm-3rdparty.js",
+  "scripts": {
+    "start": "node npm-3rdparty.js",
+    "dev": "node npm-3rdparty.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@date-fns/tz": "github:date-fns/tz",
+    "date-fns": "^4.4.0"
+  },
+  "devDependencies": {
+    "axios": "^1.20.0"
+  }
+}

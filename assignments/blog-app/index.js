@@ -1,8 +1,8 @@
 // index.js
 // This module reads commands from commands.json and executes them sequentially.
 
-import fs from 'fs/promises';
-import { join } from 'path';
+import fs from "fs/promises";
+import { join } from "path";
 import {
   resetPosts,
   createPost,
@@ -10,7 +10,7 @@ import {
   updatePost,
   deletePost,
   listPosts,
-} from './blogService.js';
+} from "./blogService.js";
 
 /**
  * Executes a single blog command object.
@@ -23,14 +23,14 @@ import {
  */
 export async function processCommand(cmd) {
   switch (cmd.action) {
-    case 'reset': {
+    case "reset": {
       await resetPosts();
-      console.log('[RESET] All posts have been cleared');
+      console.log("[RESET] All posts have been cleared");
       break;
     }
-    case 'create': {
+    case "create": {
       if (!cmd.title || !cmd.content) {
-        console.log('[ERROR] Title and content are required');
+        console.log("[ERROR] Title and content are required");
         break;
       }
 
@@ -38,7 +38,7 @@ export async function processCommand(cmd) {
       console.log(`[SUCCESS] Created post #${post.id}: '${post.title}'`);
       break;
     }
-    case 'read': {
+    case "read": {
       const post = await readPost(cmd.id);
 
       if (!post) {
@@ -47,13 +47,13 @@ export async function processCommand(cmd) {
       }
 
       console.log(
-        `[POST #${post.id} | ${post.views} views] '${post.title}' - ${post.content}`
+        `[POST #${post.id} | ${post.views} views] '${post.title}' - ${post.content}`,
       );
       break;
     }
-    case 'update': {
+    case "update": {
       if (!cmd.title && !cmd.content) {
-        console.log('[ERROR] Must provide title or content to update');
+        console.log("[ERROR] Must provide title or content to update");
         break;
       }
 
@@ -61,27 +61,27 @@ export async function processCommand(cmd) {
       console.log(
         updated
           ? `[SUCCESS] Post #${cmd.id} updated`
-          : `[ERROR] Post #${cmd.id} not found`
+          : `[ERROR] Post #${cmd.id} not found`,
       );
       break;
     }
-    case 'delete': {
+    case "delete": {
       const deleted = await deletePost(cmd.id);
       console.log(
         deleted
           ? `[SUCCESS] Post #${cmd.id} deleted`
-          : `[ERROR] Post #${cmd.id} not found`
+          : `[ERROR] Post #${cmd.id} not found`,
       );
       break;
     }
-    case 'list': {
+    case "list": {
       const posts = await listPosts();
       console.log(`[LIST] Total posts: ${posts.length}`);
       console.log(posts);
       break;
     }
-    case 'exit': {
-      console.log('[INFO] Exiting program');
+    case "exit": {
+      console.log("[INFO] Exiting program");
       process.exit(0);
     }
     default: {
@@ -100,10 +100,10 @@ export async function processCommand(cmd) {
  * Automatically bypassed during testing in gradescope.
  */
 
-if (process.env.NODE_ENV !== 'test') {
-  const commandsFilePath = join(process.cwd(), 'commands.json');
+if (process.env.NODE_ENV !== "test") {
+  const commandsFilePath = join(process.cwd(), "commands.json");
 
-  const data = await fs.readFile(commandsFilePath, 'utf-8');
+  const data = await fs.readFile(commandsFilePath, "utf-8");
   const commands = JSON.parse(data);
 
   for (const cmd of commands) {

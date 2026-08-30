@@ -1,0 +1,21 @@
+{
+  "name": "itis-4166-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CadenceElaina/itis-4166-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/CadenceElaina/itis-4166-backend/issues"
+  },
+  "homepage": "https://github.com/CadenceElaina/itis-4166-backend#readme"
+}
