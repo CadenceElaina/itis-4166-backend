@@ -1,0 +1,237 @@
+Express: unopinonated - doesnt specify structure - doesnt handle auth - up to you - for building web applications and APIs - built on top of NodeJS - middleware to allow code modularity and resuability
+- extends req and res objects with useful properties and methods
+- integrates template engines easily to render dynamic HTML
+- large ecosystem for plugins and tools
+
+install express -> import express from 'express';
+const app = express();
+
+// bind to port number
+app.listen(port, host, () => {} );
+
+A route consists of an HTTP method: GET, POST, PUT, PATCH, DELETE, ETC.
+- a path or url e.g. /users
+- route handler - a callback fn that is executed when the method and path matches an incoming req
+app.method(path, handler)
+
+app.get('/', (req, res) => {res.send('a lovely GET request')});
+
+req object extends NodeJS IncomingMessage class providing add properties
+req.params: route parameters, e.g., /users/5
+req.query: ? query string parameters, /users?name=John
+req.body: parsed req body (reqs middleware like express.json())
+req.headers: all HTTP headers sent by the client
+req.get(headerName): shortcut to retrieve a specific header
+
+res object extends NodeJS http.ServerResponse class adding additional properties
+res.send(body): sends a response body (string, buffer, or object)
+res.sendFile(path): send a file at a given path
+res.json(obj) sends a JSON responseres.render(view): renders a view template and sends the rendered HTML string to client
+res.status(code): sets the HTTP status code
+res.direct([status,]url): redirects the client to a different url
+res.set(field, value) sets a response header.
+
+Middleware: a fn that is being executed in a request response cycle
+(req, res, next) => {}
+req: incoming request object
+res: the outgoing response object
+next: a function taht calls the next middleware function
+
+app.use([path,] middleware [, middleware...])
+
+no path specified? - app level executed for every incoming request - app.use(middleware); - used for any request
+if path is specified, the functions are executed if a request's url starts with path.
+app.use('/apple', middleware);
+'/apple' or '/apple/images' or '/apple/images/news', etc all execute the middleware function above
+
+middleware function for a particular route
+app.method(url, middlware1, (req, res) => {} );
+app.method(url, middleware1, middleware2, (req, res) => {} );
+http req -> middleware fn 1 -> next() -> mw fn2 -> next() -> mw fn3 -> http response
+its a stack - one by one
+no response? it gets stuck and browser just loads never completes
+3 built-in mw fns
+express.static
+express.json
+express.urlencoded
+3rd party - morgan, express-validator etc
+Or we can develop our own
+
+express.static() resturns a middleware function that can be used to server static files, such as images, CSS files and JS files
+pass the name of the dir that contains the static files as an argument
+app.use(express.static('public'));
+express.urlencoded() returns a middleware function that parses incoming requests with urlencoded payloads
+parsed data is populated in req.body
+app.use(express.urlencoded({extended: true});
+
+express.json() returns a mw fn that parses incoming requests with JSON payloads
+app.use(express.json());
+
+
+Template Engine
+files ---> web server <--- browser
+					  ---> __|
+					Req / Res
+					
+dynamic web server - template engine - dynamically generate html content
+A template engine is a tool that can be used to generate HTML files by replacing variabels in a static template file at runtime
+				
+					{data}
+					  |
+template file ---> template Engine ---> html file
+only 1 template file needed
+
+files -> view template -> web server <--- browser
+DB ------------------------| -----------> ---|
+
+EJS Embedded JS 
+EJS template file has an ext of .ejs and it is just an html file with embedded JS code
+ex: <% if (user) { %>
+		<p> Welcome, <%= user.name %></p>
+	<% } %>
+	
+install ejs package -> require ejs -> set the view engine: app.set('view engine', 'ejs')
+create view templates adn store them in the views folder
+in route handler call res.render(view, data) to render the template and sends the rendered HTML string to client
+
+
+
+
+
+res.render('student');
+
+//students.ejs
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Student</title>
+  </head>
+  <body>
+    <h2>Student Details</h2>
+    <div class="student-container">
+      <img src="<%=obj.profile%>" alt="profile picture" />
+      <div>
+        <p><span class="opacity-70">Name: </span><%=obj.name%></p>
+        <p><span class="opacity-70">Major: </span><%=obj.major%></p>
+        <p><span class="opacity-70">GPA: </span><%=obj.gpa%></p>
+      </div>
+    </div>
+  </body>
+</html>
+- so similar to React but less pretty.
+
+
+API
+communication between two software componetns
+defines: 
+allowed requests
+returned data
+and data format
+
+REST: Representational State Transfer
+- a set of conventions for designing APIs
+- Built on HTTP
+- Enables clients and servers to exchange data using HTTP
+REST APIS:
+- organized around resources
+- are nouns e.g. blog post, user
+- collection is a group of related resources e.g. all posts by a user
+- typically represented as JSON or XML
+- JSON = lightweight text-based format similar to JS objects
+
+Resource Identifier
+- unique address for a resource: URI (unique resource identifier)
+- URI should use plural nouns, not verbs
+ex:
+	-/posts all blog posts
+	-/posts/:id blog post with id 4
+	
+Actions (HTTP Methods)
+- GET: retrieve a specific resource or a collection of resources
+- POST: create a new resource
+- PUT: replace or update a specified resource
+- PATCH: exists for partial updates
+- DELET: used to remove a specified resource entirely
+
+client - HTTP req -> Server
+- resource identifier URI
+- HTTP method action to perform
+- optional headers
+- optional body (data)
+
+Server - HTTP res -> Client
+- status code (operation outcome)
+- Optional headers
+- Optional body (data)
+
+SUCCESS STATUS CODES
+200 = OK
+201 = CREATED (new resource created)
+204 = No Content (req succeeded but no content to return) - typically used for delete operatiosn
+
+ERROR STATUS CODE
+400 Bad Request: client sent invalid or malformed data
+401 Unauthorized Authentication is required or failed
+403 Forbidden: Client is not allowed to access the resource
+404 Not Found: Resource doesn't exist
+500 Internal Server Error: server encountered an error
+
+Layers
+- separation of concerns - easier to read and maintain
+- each layer has a single responsibility
+- can make testing and debugging simpler
+- allows for flexibility for future changes
+
+Route <---HTTP REQUEST---
+|
+|
+Controller --- HTTP RESPONSE --->
+|		|
+|		|
+Service_|
+|		|
+|		|
+Repository <---> DB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

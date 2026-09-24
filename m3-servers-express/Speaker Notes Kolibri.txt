@@ -1,0 +1,44 @@
+Speaker Notes: Kolibri Tech for Good
+Slide 1: Hook
+
+Hi, I am Cadence, and today I am spotlighting Learning Equality, a nonprofit bringing digital learning to students who have no internet.
+
+Hook: Picture a classroom of about 80 students in the Kakuma Refugee Camp in Kenya, with only one textbook. When the lesson needs a picture or diagram, the teacher has to carry the book around so each student can look at it one by one, and everyone else waits. Jamie Alexandre
+ALEC ZAN DRA
+, a co-founder of Learning Equality, saw this firsthand.  
+This isnt just Kenya...
+About a third of the world, roughly 2.6 billion people, has no internet. As schools and learning resources move online, those students fall further behind. This is the digital divide, and education is where it hurts most.
+
+Slide 3: Meet Kolibri
+
+Mission: bring quality education to learners with little or no internet. Kolibri is free, open source, and offline-first. It runs on cheap and older devices and bundles lessons, videos, exercises, and teacher tools that track progress without a connection. Quick nerd moment: it is built with Python, Django, JavaScript, and Vue.js, and anyone can view the code.
+
+Slide 4: Impact by the numbers
+
+Emphasize reach: more than 10 million learners in over 220 countries and territories, 31 languages, and more than 53,000 new installs in 2024 alone. It reaches places most edtech never touches: refugee camps, rural schools, orphanages, even correctional facilities.
+
+Slide 5: Real classrooms, real learners
+
+In 2023 they piloted a program for 714 out-of-school refugee learners in Uganda. They work with partners across Africa, the Middle East, Latin America, and South Asia. UN agencies and major foundations partner with them, which builds credibility.
+
+Slide 6: The ethics lens
+
+Take your time here, ethics is 4 of the 10 points. 
+
+1) Privacy: Kolibri only collects anonymized aggregate data, so it cannot measure every install. It accepts that tradeoff to protect learners. 2) Comparison point: a 2026 study of Khanmigo, an online AI tutor used by students who had internet, found most students rarely used it even with full access. A tool alone does not create learning, which is why Kolibri works through local teachers and NGOs who build it into real lessons. 3) Our course guide defines a Technology Philanthropist as someone who believes tech should serve the betterment of all humanity. 4) Counterpoint: curriculum choices carry cultural weight, which is why co-designing with local partners matters.
+
+Slide 7: How you can help
+
+Donate: they are a nonprofit, and even small gifts help. Contribute: it is open source, so CS students can contribute code, and they have mentored contributors through Google Summer of Code. Translators can help bring Kolibri to new languages too.
+
+Slide 8: Advocate
+
+Advocate: share their work, and push schools and leaders to treat internet access as an education issue. Connect it back to the viewer: you are in a computing class right now, and your skills could help a student you will never meet.
+
+Slide 9: Closing
+
+Callback to the 80 students sharing one image. End on the big line and pause for a beat before stopping the recording.
+
+Slide 10: Sources
+
+No need to talk over this. Show it for a few seconds at the end.

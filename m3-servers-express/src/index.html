@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>XDDDDDD</h1>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/students">students</a></li>
+    </ul>
+
+    <h2>Students</h2>
+    <input id="name-input" placeholder="Student name" />
+    <button id="add-btn">Add</button>
+    <ul id="student-list"></ul>
+
+    <script>
+      const list = document.getElementById("student-list");
+      const input = document.getElementById("name-input");
+
+      async function loadStudents() {
+        const res = await fetch("/students");
+        const students = await res.json();
+
+        list.innerHTML = "";
+
+        for (const s of students) {
+          const li = document.createElement("li");
+          li.textContent = `${s.name} (id ${s.id}) `;
+          const btn = document.createElement("button");
+          btn.textContent = "Remove";
+          btn.onclick = async () => {
+            await fetch(`/students/${s.id}`, { method: "DELETE" });
+            loadStudents();
+          };
+          li.appendChild(btn);
+          list.appendChild(li);
+        }
+      }
+
+      document.getElementById("add-btn").onclick = async () => {
+        const name = input.value.trim();
+        if (!name) return;
+        await fetch("/students", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name }),
+        });
+        input.value = "";
+        loadStudents();
+      };
+
+      loadStudents();
+    </script>
+  </body>
+</html>

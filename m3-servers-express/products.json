@@ -1,0 +1,29 @@
+[
+    {
+        "id": "1",
+        "name": "T-Shirt lol",
+        "description": "a shirt",
+        "price": 9.99,
+        "category": "clothing",
+        "image_url": "https://example.com/images/tshirt.jpg",
+        "in_stock": true
+    },
+        {
+        "id": "2",
+        "name": "T-Shirt lol 2 ",
+        "description": "a shirt",
+        "price": 7.99,
+        "category": "clothing",
+        "image_url": "https://example.com/images/tshirt.jpg",
+        "in_stock": true
+    }
+    ,    {
+        "id": "3",
+        "name": "T-Shirt lol 3",
+        "description": "a shirt",
+        "price": 11.99,
+        "category": "clothing",
+        "image_url": "https://example.com/images/tshirt.jpg",
+        "in_stock": true
+    }
+]

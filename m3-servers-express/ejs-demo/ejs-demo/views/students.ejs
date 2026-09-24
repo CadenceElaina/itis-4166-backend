@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Students</title>
+  </head>
+  <body>
+    <h2>Students</h2>
+    <div class="students-container">
+      <%if(students.length) {%>
+  <%students.forEach(student=> {%>
+        <div class="center-align">
+          <img src="<%=student.profile%>" alt="profile picture"/>
+          <p><%=student.name%></p>
+        </div>
+      <%})
+      } else {%>
+      <p>There is no student.</p>
+      <% } %>
+      <!-- 
+      DO JS FIRST then put in the delimiters 
+      so painful compared to react xddd
+      <div class="center-align">
+        <img src="/images/alice.jpg" alt="profile picture" />
+        <p>Alice</p>
+      </div>
+
+      <div class="center-align">
+        <img src="/images/bob.jpg" alt="profile picture" />
+        <p>Bob</p>
+      </div>
+
+      <div class="center-align">
+        <img src="/images/charlie.jpg" alt="profile picture" />
+        <p>charlie</p>
+      </div>
+      -->
+    </div>
+  </body>
+</html>

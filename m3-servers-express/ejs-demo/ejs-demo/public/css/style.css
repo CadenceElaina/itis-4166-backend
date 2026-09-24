@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  background-color: hsl(0, 0%, 92%);
+  color: hsl(210, 8%, 14%);
+  padding: 2rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.students-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.student-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.opacity-70 {
+  opacity: 70%;
+}

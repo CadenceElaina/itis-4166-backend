@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/CadenceElaina/itis-4166-backend/issues"
   },
-  "homepage": "https://github.com/CadenceElaina/itis-4166-backend#readme"
+  "homepage": "https://github.com/CadenceElaina/itis-4166-backend#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
